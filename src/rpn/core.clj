@@ -7,20 +7,20 @@
 (defn- store-operation [tree op]
   (let [fn (resolve op)]
     (reverse
-    (cons
-      (cons fn (take-last 2 tree))
-      (reverse
-        (drop-last 2 tree))))))
+      (cons
+        (cons fn (take-last 2 tree))
+        (reverse
+          (drop-last 2 tree))))))
 
-(defn- store [tree symbol ]
+(defn- store [tree symbol]
   (if (number? symbol)
     (store-number tree symbol)
     (store-operation tree symbol)))
 
 (defn- walk [tree]
-  (if (seq? (first tree))  ;; then, the first item is an operation
-     (cons (eval (first tree)) (rest tree))
-     tree))
+  (if (seq? (first tree))                                   ;; then, the first item is an operation
+    (cons (eval (first tree)) (rest tree))
+    tree))
 
 (defn- format [tree]
   (str/join " " tree))
