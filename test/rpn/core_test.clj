@@ -20,4 +20,7 @@
        (fact "it works for the examples"
              (calculate "4 2 + 3 -") => "3"
              (calculate "3 5 8 * 7 + *") => "141"
-             (calculate "7 2 - 3 4") => "5 3 4"))
+             (calculate "7 2 - 3 4") => "5 3 4")
+
+       (fact "it works when operations and numbers are combined"
+             (calculate "9 1 - 9 4 2 + 3 - 3 5 8 * 7 + * 1") => "8 9 3 141 1"))
