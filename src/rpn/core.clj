@@ -1,6 +1,9 @@
 (ns rpn.core
   (:require [clojure.string :as str]))
 
+(defn- operation->tokens [operation]
+  (str/split (str/trim operation) #"\s+"))
+
 (defn- add-number [tree n]
   (reverse (cons n (reverse tree))))
 
@@ -24,6 +27,6 @@
   (str/join " " tree))
 
 (defn calculate [operation]
-  (let [tokens (str/split (str/trim operation) #"\s+")
+  (let [tokens (operation->tokens operation)
         symbols (map read-string tokens)]
     (format (walk (reduce add-symbol nil symbols)))))
