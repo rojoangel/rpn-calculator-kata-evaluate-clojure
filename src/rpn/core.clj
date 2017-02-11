@@ -18,9 +18,7 @@
     (store-operation tree symbol)))
 
 (defn- walk [tree]
-  (if (seq? (first tree))                                   ;; then, the first item is an operation
-    (cons (eval (first tree)) (rest tree))
-    tree))
+  (map eval tree))
 
 (defn- format [tree]
   (str/join " " tree))
