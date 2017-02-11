@@ -23,11 +23,8 @@
     (add-number tree symbol)
     (add-operation tree symbol)))
 
-(defn- walk [tree]
-  (map eval tree))
-
 (defn- format [tree]
   (str/join " " tree))
 
 (defn calculate [operation]
-  (format (walk (reduce add-symbol nil (tokens->symbols (operation->tokens operation))))))
+  (format (map eval (reduce add-symbol nil (tokens->symbols (operation->tokens operation))))))
