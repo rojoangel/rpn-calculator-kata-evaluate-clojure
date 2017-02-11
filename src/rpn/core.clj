@@ -30,5 +30,4 @@
   (str/join " " tree))
 
 (defn calculate [operation]
-  (let [tokens (operation->tokens operation)]
-    (format (walk (reduce add-symbol nil (tokens->symbols tokens))))))
+  (format (walk (reduce add-symbol nil (tokens->symbols (operation->tokens operation))))))
