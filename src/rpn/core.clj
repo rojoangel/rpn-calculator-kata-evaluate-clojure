@@ -27,4 +27,9 @@
   (str/join " " tree))
 
 (defn calculate [operation]
-  (format (map eval (reduce add-symbol nil (tokens->symbols (operation->tokens operation))))))
+  (format
+    (map eval
+         (reduce add-symbol nil
+                 (tokens->symbols
+                   (operation->tokens
+                     operation))))))
