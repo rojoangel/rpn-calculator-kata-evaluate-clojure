@@ -4,6 +4,9 @@
 (defn- operation->tokens [operation]
   (str/split (str/trim operation) #"\s+"))
 
+(defn- tokens->symbols [tokens]
+  (map read-string tokens))
+
 (defn- add-number [tree n]
   (reverse (cons n (reverse tree))))
 
@@ -28,5 +31,5 @@
 
 (defn calculate [operation]
   (let [tokens (operation->tokens operation)
-        symbols (map read-string tokens)]
+        symbols (tokens->symbols tokens)]
     (format (walk (reduce add-symbol nil symbols)))))
